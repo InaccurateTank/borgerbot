@@ -1,0 +1,24 @@
+{
+  "name": "borgerbot",
+  "version": "1.0.0",
+  "description": "It's Borger time",
+  "main": "main.js",
+  "private": "true",
+  "scripts": {
+    "start": "NODE_ENV=development node bot.js",
+    "devstart": "NODE_ENV=development nodemon bot.js"
+  },
+  "author": "InaccurateTank",
+  "license": "Unlicense",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "dependencies": {
+    "discord.js": "^12.5.3"
+  },
+  "devDependencies": {
+    "dotenv": "^10.0.0",
+    "nodemon": "^2.0.7"
+  }
+}
