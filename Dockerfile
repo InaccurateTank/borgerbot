@@ -4,6 +4,6 @@ ENV NODE_ENV=production
 
 COPY ["package.json", "package-lock.json", "bot.js", "./"]
 
-RUN apk update npm install
+RUN npm install --production
 
 ENTRYPOINT [ "node", "bot.js" ]
