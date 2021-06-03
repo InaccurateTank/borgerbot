@@ -3,7 +3,7 @@ LABEL stage=int
 
 RUN apk update \
     && apk add --no-cache git \
-    && git clone /repo
+    && git clone https://github.com/InaccurateTank/borgerbot
 
 FROM node:current-alpine
 WORKDIR /srv/borgerbot

@@ -12,7 +12,7 @@
   "license": "Unlicense",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/InaccurateTank/borgerbot"
   },
   "dependencies": {
     "discord.js": "^12.5.3"
