@@ -1,18 +1,8 @@
-FROM alpine as int
-LABEL stage=int
-
-RUN apk update \
-    && apk add --no-cache git \
-    && git clone https://github.com/InaccurateTank/borgerbot
-
 FROM node:current-alpine
 WORKDIR /srv/borgerbot
 ENV NODE_ENV=production
 
-# COPY --from=int /borgerbot/main.js ./main.js
-# COPY --from=int /borgerbot/package.json ./package.json
-# COPY --from=int /borgerbot/package-lock.json ./package-lock.json
-COPY --from=int ["/borgerbot/package.json", "/borgerbot/package-lock.json", "/borgerbot/main.js", "./"]
+COPY ["package.json", "package-lock.json", "bot.js", "./"]
 
 RUN apk update npm install
 
