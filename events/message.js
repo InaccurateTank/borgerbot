@@ -27,7 +27,7 @@ module.exports = {
   }
 };
 
-//     if(msg.content.match(/\bvore\b/ig)) {
+//     if(msg.content.match(//ig)) {
 //       let rand = Math.floor((Math.random() * 2) + 1);
 //       let img;
 //       switch(rand) {
