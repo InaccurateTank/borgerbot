@@ -1,5 +1,5 @@
 # Borgerbot
-This discord bot literally just responds to all messages that involve the word "burger" and "borger" with the time in Borger Texas.  That's it, that's all it does.  Its entire purpose is an injoke.
+Personal general-purpose discord bot.  Mostly just says borger for the moment.
 
 Deployment of the bot is fairly simple.
 
