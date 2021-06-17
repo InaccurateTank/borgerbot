@@ -1,0 +1,7 @@
+{
+  "version": "2.0",
+  "patchnote": "Structural overhaul and command handling.",
+  "thought": "Talking to people has proven, repeatedly, to be a horrible and dissociation inducing mistake.",
+  "prefix": "/",
+  "intents": ["GUILDS", "GUILD_MESSAGES"]
+}

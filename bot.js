@@ -1,18 +1,32 @@
 if(process.env.NODE_ENV === 'development') require('dotenv').config();
-const { Client, Intents } = require('discord.js');
-const client = new Client({ intents: [Intents.FLAGS.GUILD_MESSAGES] });
+const fs = require('fs');
+const Discord = require('discord.js');
 
-client.on("ready", () => {
-  console.log(`Logged in as ${client.user.tag}!`);
-})
+const config = require('./config.json');
+const client = new Discord.Client({
+  ws: { intents: config.intents }
+});
 
-client.on("message", msg => {
-  if(!msg.author.bot) {
-    if(msg.content.match(/\b(b[ou]rger)\b/ig)) {
-      let t = new Date().toLocaleString("en-US", { hour: "numeric", minute: "2-digit", timeZone: "America/Chicago" });
-      msg.channel.send(`It is ${t} in Borger Texas.`);
-    }
-  }
-})
+// Commands
+client.commands = new Discord.Collection();
+
+const cmdFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
+console.log(`Loading ${cmdFiles.length} commands.`);
+for (const file of cmdFiles) {
+	const command = require(`./commands/${file}`);
+	client.commands.set(command.name, command);
+}
+
+// Events
+const evtFiles = fs.readdirSync('./events').filter(file => file.endsWith('.js'));
+console.log(`Loading ${evtFiles.length} events.`);
+for (const file of evtFiles) {
+	const event = require(`./events/${file}`);
+	if (event.once) {
+		client.once(event.name, (...args) => event.execute(...args, client));
+	} else {
+		client.on(event.name, (...args) => event.execute(...args, client));
+	}
+}
 
 client.login(process.env.TOKEN);
