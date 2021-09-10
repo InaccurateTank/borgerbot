@@ -38,5 +38,5 @@ module.exports = {
 //           img = 'b';
 //           break;
 //       }
-//       msg.channel.send(img);
+//       msg.reply(img);
 //     }
